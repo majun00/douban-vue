@@ -3,6 +3,12 @@
        <slot></slot>
     </div>
 </template>
+<script>
+    import mTabbarItem from './tabbar-item'
+    export default {
+        props: ['value']
+    }
+</script>
 <style lang="less">
 .m-tabbar{
     display: flex;

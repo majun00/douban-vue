@@ -1,10 +1,22 @@
 <template>
-    <a class="m-tabbar-item" >
-        <span class="m-tabbar-item-icon"><slot name="icon-normal"></slot></span>
+    <a class="m-tabbar-item" :class="{'is-active':isActive}" @click="$parent.$emit('input',id)">
+        <span class="m-tabbar-item-icon" v-show="!isActive"><slot name="icon-normal"></slot></span>
+        <span class="m-tabbar-item-icon" v-show="isActive"><slot name="icon-active"></slot></span>
         <span class="m-tabbar-item-text"><slot></slot></span>
     </a>
 </template>
-
+<script>
+    export default{
+        props:['id'],
+        computed:{
+            isActive(){
+                if(this.$parent.value===this.id){
+                    return true;
+                }
+            }
+        }
+    }
+</script>
 <style lang="less">
 .m-tabbar-item{
     flex: 1;
